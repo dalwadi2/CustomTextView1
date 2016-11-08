@@ -6,7 +6,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
-
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,8 +17,79 @@ allprojects {
     repositories {
         jcenter()
     }
+//    apply plugin: 'com.android.library'
+//    apply plugin: 'com.github.dcendents.android-maven'
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//plugins {
+//    id "com.jfrog.bintray" version "1.5"
+//}
+/*
+
+group = 'io.harsh.dalwadi'
+version = '1.0.0'
+
+
+def siteUrl = 'https://github.com/dalwadi2/CustomTextView1'      // Homepage URL of the library
+def gitUrl = 'https://github.com/dalwadi2/CustomTextView1.git'   // Git repository URL
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'EzzyTextView'
+            description 'A textview that had functionality to change Drawable\'s dimensions in XML file'
+            url 'https://github.com/googlesamples/easygoogle'
+            inceptionYear '2016'
+
+            packaging 'aar'
+            groupId 'io.harsh.dalwadi'
+            artifactId 'customtextview'
+            version '1.0.0'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url siteUrl
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection gitUrl
+                url siteUrl
+
+            }
+            developers {
+                developer {
+                    name 'Harsh Dalwadi'
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'EzzyTextView'
+        userOrg = user
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
+        version {
+            name = '1.0.0'
+            desc = 'Gradle Bintray Plugin 1.0 final'
+            vcsTag = '0.1'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14.1'
+}*/
